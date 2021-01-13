@@ -39,17 +39,58 @@
 .btn-action {
     color: var(--main-color);
     background-color: var(--color-white);
-    border-color: none;
+    border-color: var(--color-gray);
 }
 
 .btn-action:hover {
-    color: var(--color-white);
-    background-color: var(--main-color);
-    border-color: 0 0 0 0.1rem var(--main-color);
+    color: var(--main-color);
+    background-color: var(--color-gray);
+    border-color: var(--color-gray);
 }
 
 .btn-action:focus {
-    border-color: 0 0 0 0.1rem var(--main-color);
-    box-shadow: 0 0 0 0.1rem var(--main-color-opacity);
+    border-color: var(--color-gray);
+    box-shadow: var(--color-gray);
 }
 
+.btn-footer {
+    margin: 3px;
+    width: 6.1875em;
+    height: 2.5em;
+}
+
+@media (max-width: 320px) { 
+    .btn-footer {
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 71px;
+        height: 40px;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 425px) { 
+    .btn-footer {
+        margin-left: 8px;
+        margin-right: 8px;
+        width: 81px;
+        height: 40px;
+    }
+}
+
+@media (min-width: 426px) and (max-width: 768px)  { 
+    .btn-footer {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+}
+@media (min-width: 769px) { 
+    .btn-footer {
+        margin-right: 35px;
+        margin-left: 35px;
+    }
+}
+
+.btn-welcome {
+    width: 136px;
+    height: 40px;
+}

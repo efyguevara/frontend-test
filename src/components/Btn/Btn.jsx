@@ -3,10 +3,10 @@ import './index.css';
 import { Button } from 'react-bootstrap';
 
 const Btn = (props) => {
-    const { title, align, theme } = props;
+    const { title, align, theme, size } = props;
 
     return (
-        <Button variant={theme} className={align} >{title}</Button>
+        <Button variant={theme} className={align} size={size}>{title}</Button>
     )
 }
 
