@@ -1,0 +1,26 @@
+.searcher {
+    margin: 16px;
+}
+
+.input-group-text {
+    background-color: var(--color-white);
+    border-right: none;
+}
+.form-control:focus  {
+    color: #495057;
+    background-color: #fff;
+    border-color: var(--main-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem var(--main-color-opacity);
+}
+.searcher-without-border {
+    border-left: none;
+}
+
+ .searcher:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: var(--main-color-opacity);
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem var(--main-color-opacity);
+}
