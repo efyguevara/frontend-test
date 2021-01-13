@@ -1,0 +1,10 @@
+html {
+    --main-color: #ff9500;
+    --main-color-opacity: rgba(255, 149, 0, 0.5);
+    --color-gray: #0000001a;
+    --cancel-and-alert-text-color:#4A4A4A;
+    --background-color-alerts: #FAFAFA;
+    --list-text-color: #212121;
+    --color-white: #ffffff;
+    --color-black: #000000;
+  }
