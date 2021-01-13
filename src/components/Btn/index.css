@@ -1,0 +1,55 @@
+.btn {
+    font-size: 17px;
+    font-weight: 600; 
+}
+
+.btn-main {
+    color: var(--color-white);
+    background-color: var(--main-color);
+    border-color: 0 0 0 0.1rem var(--main-color);
+}
+
+.btn-main:hover {
+    color: var(--color-white);
+    background-color: var(--main-color-opacity);
+    border-color: 0 0 0 0.1rem var(--main-color-opacity);   
+}
+
+.btn-main:focus { 
+    box-shadow: 0 0 0 0.1rem var(--main-color-opacity);
+}
+
+.btn-cancel {
+    color: var(--cancel-and-alert-text-color);
+    background-color: var(--color-white);
+    border-color: var(--color-black);
+}
+
+.btn-cancel:hover {
+    color: var(--color-white);
+    background-color: var(--main-color);
+    border-color: 0 0 0 0.1rem var(--main-color);
+}
+
+.btn-cancel:focus {
+    border-color: 0 0 0 0.1rem var(--main-color);
+    box-shadow: 0 0 0 0.1rem var(--main-color-opacity);
+}
+
+.btn-action {
+    color: var(--main-color);
+    background-color: var(--color-white);
+    border-color: none;
+}
+
+.btn-action:hover {
+    color: var(--color-white);
+    background-color: var(--main-color);
+    border-color: 0 0 0 0.1rem var(--main-color);
+}
+
+.btn-action:focus {
+    border-color: 0 0 0 0.1rem var(--main-color);
+    box-shadow: 0 0 0 0.1rem var(--main-color-opacity);
+}
+
