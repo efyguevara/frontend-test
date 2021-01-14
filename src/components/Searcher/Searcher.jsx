@@ -9,7 +9,7 @@ const Searcher = () => {
     return (
         <>
             <Container>
-                <div className="searcher">
+                <div>
                     <InputGroup>
                         <InputGroup.Prepend>
                             <InputGroup.Text>{iconSearch}</InputGroup.Text>

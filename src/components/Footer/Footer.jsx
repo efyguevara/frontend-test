@@ -15,20 +15,18 @@ const Footer = () => {
 
     return (
         <>
-            <div className="footer">
-                <Container>
-                    <Row>
-                        <Col xs={7} sm={8} md={6} lg={6} className="d-flex">
-                            <Btn title={trashIcon} theme="action" size="footer" />
-                            <Btn title={shareIcon} theme="action" size="footer" />
-                        </Col>
+            <Container>
+                <Row>
+                    <Col xs={7} sm={8} md={6} lg={6} className="d-flex">
+                        <Btn title={trashIcon} theme="action" size="footer" />
+                        <Btn title={shareIcon} theme="action" size="footer" />
+                    </Col>
 
-                        <Col xs={5} sm={4} md={6} lg={6} className="align-right">
-                            <Btn title={plusIcon} theme="main" size="footer" />
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+                    <Col xs={5} sm={4} md={6} lg={6} className="align-right">
+                        <Btn title={plusIcon} theme="main" size="footer" />
+                    </Col>
+                </Row>
+            </Container>
         </>
     )
 }
