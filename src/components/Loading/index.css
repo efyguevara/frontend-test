@@ -1,0 +1,11 @@
+.loading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    top:40%;
+    bottom:50%;
+    vertical-align: middle;
+    left: 50%;
+    right: 50%;
+}
