@@ -8,10 +8,11 @@ import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import reducers from './reducers/index';
-import Layout from './components/Layout';
+import App from './routes/App';
 
 const initialState = {
-  loading: false
+  loading: false,
+  counters: [],
 }
 
 const store = createStore(
@@ -19,23 +20,6 @@ const store = createStore(
   initialState,
   composeWithDevTools(applyMiddleware(thunk)),
 );
-
-// You don't have to use `fetch` btw, use whatever you want
-const getCounters = () =>
-  fetch('/api/v1/counter', { method: 'get' })
-    .then(res => res.json());
-
-const App = () => {
-  React.useEffect(() => {
-    getCounters().then(console.log, console.error);
-  }, []);
-
-  return (
-    <>
-      <Layout />
-    </>
-  );
-};
 
 ReactDOM.render(
   <Provider store={store}>
