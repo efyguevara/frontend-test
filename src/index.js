@@ -12,7 +12,8 @@ import App from './routes/App';
 
 const initialState = {
   loading: false,
-  counters: [],
+  counterStore: [],
+  createNewCounterModal: false,
 }
 
 const store = createStore(
