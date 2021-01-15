@@ -1,6 +1,6 @@
 import React from 'react';
-import Searcher from './Searcher/Searcher';
-import Footer from './Footer/Footer';
+import Searcher from '../Searcher/Searcher';
+import Footer from '../Footer/Footer';
 
 const Layout = () => {
 
