@@ -17,3 +17,11 @@ export const getCounters = (counter) => ({
     type: 'GET_COUNTERS', 
     counter,
 });
+export const createNewCounterModalAction = (showModal) => ({
+    type: 'CREATE_NEW_COUNTER_MODAL_ACTION', 
+    showModal,
+});
+export const postNewCounter = (newCounter) => ({
+    type: 'POST_NEW_COUNTER', 
+    newCounter,
+});

@@ -13,12 +13,24 @@ const reducers = (state, action) => {
     case 'SET_COUNTERS':
       return {
         ...state,
-        counters: [...state.counters, action.counter]
+        counterStore: [...state.counterStore, action.counter]
       };
     case 'GET_COUNTERS':
       return {
+        ...state,
         loading: false,
-        counters: action.counter,
+        counterStore: action.counter,
+      };
+    case 'CREATE_NEW_COUNTER_MODAL_ACTION':
+      return {
+        ...state,
+        createNewCounterModal: action.showModal
+      };
+    case 'POST_NEW_COUNTER':
+      return {
+        ...state,
+        counterStore: [...state.counterStore, action.newCounter],
+        createNewCounterModal: false
       };
     default:
       return state

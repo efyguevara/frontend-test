@@ -1,0 +1,9 @@
+.svg path .img1{
+    fill: var(--main-color);
+ }
+
+ .align-right {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-end;
+}
