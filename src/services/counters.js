@@ -2,7 +2,8 @@ import {
     getCounters,
     postNewCounter,
     incCounter,
-    decCounter
+    decCounter,
+    deleteCounter
 } from '../actions';
 
 export const getCountersService = () => {
@@ -65,5 +66,24 @@ export const postCounterDecService = (props) => {
                     return dispatch(decCounter(res))
                 })
             )
+    }
+}
+
+export const deleteCounterService = (selectedCounterStore) => {
+    return (dispatch) => {
+        selectedCounterStore.forEach((el) => {
+            fetch('/api/v1/counter', {
+                method: 'DELETE',
+                body: JSON.stringify(el),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then((res) => res.json()
+                    .then((res) => {
+                        return dispatch(deleteCounter(res))
+                    })
+                )
+        })
     }
 }
