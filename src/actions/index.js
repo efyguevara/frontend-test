@@ -33,3 +33,19 @@ export const decCounter = (objectCounter) => ({
     type: 'DEC_COUNTER',
     objectCounter,
 });
+
+export const shareCounter = (showPopover) => ({
+    type: 'SHARE_COUNTER',
+    showPopover,
+});
+
+export const selectedCounter = (data) => ({
+    type: 'SELECTED_COUNTER',
+    data,
+});
+
+export const deleteCounter = (id) => ({
+    type: 'DELETE_COUNTER',
+    id,
+});
+

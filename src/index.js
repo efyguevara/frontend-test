@@ -14,6 +14,8 @@ const initialState = {
   loading: false,
   counterStore: [],
   createNewCounterModal: false,
+  shareCounterStore: false,
+  selectedCounterStore: [],
 }
 
 const store = createStore(

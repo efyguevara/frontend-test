@@ -56,6 +56,28 @@ const reducers = (state, action) => {
         }),
         createNewCounterModal: false
       };
+    case 'SHARE_COUNTER':
+      return {
+        ...state,
+        shareCounterStore: action.showPopover,
+      };
+    case 'SELECTED_COUNTER':
+      let payload = [];
+      if (state.selectedCounterStore.some((el) => el.id === action.data.id)) {
+        payload = state.selectedCounterStore.filter((el) => el.id !== action.data.id)
+      } else {
+        payload = [...state.selectedCounterStore, action.data]
+      }
+      return {
+        ...state,
+        selectedCounterStore: payload,
+      };
+    case 'DELETE_COUNTER':
+      return {
+        ...state,
+        counterStore: state.counterStore.filter((el) => el.id !== action.id),
+      };
+
     default:
       return state
   }
