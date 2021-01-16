@@ -32,6 +32,30 @@ const reducers = (state, action) => {
         counterStore: [...state.counterStore, action.newCounter],
         createNewCounterModal: false
       };
+    case 'INC_COUNTER':
+      return {
+        ...state,
+        counterStore: state.counterStore.map((el) => {
+          if (el.id === action.objectCounter.id) {
+            return action.objectCounter
+          } else {
+            return el
+          }
+        }),
+        createNewCounterModal: false
+      };
+    case 'DEC_COUNTER':
+      return {
+        ...state,
+        counterStore: state.counterStore.map((el) => {
+          if (el.id === action.objectCounter.id) {
+            return action.objectCounter
+          } else {
+            return el
+          }
+        }),
+        createNewCounterModal: false
+      };
     default:
       return state
   }
