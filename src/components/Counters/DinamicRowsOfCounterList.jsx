@@ -6,6 +6,7 @@ import minus from '../../assets/static/minus.svg';
 import plus from '../../assets/static/plus-main-color.svg';
 import Btn from '../Btn/Btn';
 import { getCountersService, postCounterIncService, postCounterDecService } from '../../services/counters';
+import { selectedCounter } from '../../actions';
 
 const DinacmiRowsOfCounterList = (props) => {
     const dispatch = useDispatch();
@@ -22,11 +23,15 @@ const DinacmiRowsOfCounterList = (props) => {
         dispatch(postCounterDecService({ props }))
     };
 
+    const handleSelectedCounter = () => {
+        dispatch(selectedCounter(props))
+    }
+
     const iconMinus = <Btn theme="none" title={<img src={minus} alt="icon minus" />} onClick={handleCounterDec} />
     const iconPlus = <Btn theme="none" title={<img src={plus} alt="icon plus" />} onClick={handleCounterInc} />
 
     return (
-        <ListGroup.Item action className="br-5">
+        <ListGroup.Item key={props.id} action onClick={handleSelectedCounter} >
             <Row>
                 <Col className='pl-0'><span>{props.title}</span></Col>
                 <Col className='pr-0'><span className="align-right">{iconMinus}  {props.count}  {iconPlus}</span></Col>
