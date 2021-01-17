@@ -4,9 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Loading from '../components/Loading/Loading';
 import Counters from '../templates/Counters/Counters';
 import Welcome from '../templates/Welcome/Welcome';
+import Notifications from '../components/Notifications/Notifications';
 
-const App = ({ loading }) => {
+const App = ({ loading, notifications }) => {
   const loadingComponent = <Loading />
+  const notificationComponent = <Notifications />
+
   return (
     <>
       <Router>
@@ -17,12 +20,14 @@ const App = ({ loading }) => {
         </Switch>
       </Router>
       {loading === true ? loadingComponent : null}
+      {notifications !== null ? notificationComponent : null}
     </>
   );
 };
 const mapStateToProps = (state) => {
   return {
-    loading: state.loading
+    loading: state.loading,
+    notifications: state.notifications
   }
 }
 export default connect(mapStateToProps)(App);
