@@ -10,23 +10,24 @@ import { createNewCounterModalAction, shareCounter } from '../../actions';
 import ShareCounter from '../Counters/ShareCounter';
 import { deleteCounterService } from '../../services/counters';
 
-const Footer = ({ selectedCounterStore }) => {
+const Footer = ({ selectedCounterStore, shareCounterStore }) => {
     const dispatch = useDispatch();
 
     const trashIcon = <img src={trash} alt='trash icon' />;
     const shareIcon = <img src={share} alt='share icon' />;
     const plusIcon = <img src={plus} alt='plus icon' />;
-    const shareComponent = <ShareCounter />;
+    const shareComponent = <ShareCounter selectedCounter={selectedCounterStore} />;
 
     const handleNewCounterModal = () => {
         dispatch(createNewCounterModalAction(true))
     }
+
     const handleShareCounter = () => {
-        dispatch(shareCounter(true))
+        dispatch(shareCounter(!shareCounterStore))
     }
 
     const showShareComponent = () => (
-        <OverlayTrigger trigger="click" placement="top" overlay={shareComponent}>
+        <OverlayTrigger trigger="click" placement="top" overlay={shareComponent} show={shareCounterStore}>
             <Btn title={shareIcon} theme="action" size="footer" onClick={handleShareCounter} />
         </OverlayTrigger>
     );
@@ -36,20 +37,23 @@ const Footer = ({ selectedCounterStore }) => {
             dispatch(deleteCounterService(selectedCounterStore))
         } else { return console.log("error") }
     }
+    const buttonThash = <Btn title={trashIcon} theme="action" size="footer" onClick={handleDeleteCounter} />
 
     return (
         <>
             <Container>
-                <Row>
-                    <Col xs={7} sm={8} md={6} lg={6} className="d-flex">
-                        <Btn title={trashIcon} theme="action" size="footer" onClick={handleDeleteCounter} />
-                        {showShareComponent()}
-                    </Col>
+                <div className="footer">
+                    <Row>
+                        <Col xs={7} sm={8} md={6} lg={6} className="d-flex">
+                            {selectedCounterStore.length !== 0 ? buttonThash : null}
+                            {selectedCounterStore.length !== 0 ? showShareComponent() : null}
+                        </Col>
 
-                    <Col xs={5} sm={4} md={6} lg={6} className="align-right">
-                        <Btn title={plusIcon} theme="main" size="footer" onClick={handleNewCounterModal} />
-                    </Col>
-                </Row>
+                        <Col xs={5} sm={4} md={6} lg={6} className="align-right">
+                            <Btn title={plusIcon} theme="main" size="footer" onClick={handleNewCounterModal} />
+                        </Col>
+                    </Row>
+                </div>
             </Container>
         </>
     )
@@ -57,8 +61,8 @@ const Footer = ({ selectedCounterStore }) => {
 
 const mapStateToProps = (state) => {
     return {
-        selectedCounterStore: state.selectedCounterStore
+        selectedCounterStore: state.selectedCounterStore,
+        shareCounterStore: state.shareCounterStore
     }
 }
 export default connect(mapStateToProps)(Footer);
-
