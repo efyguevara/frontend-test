@@ -8,7 +8,7 @@ import share from '../../assets/static/share.svg';
 import plus from '../../assets/static/plus.svg';
 import { createNewCounterModalAction, shareCounter } from '../../actions';
 import ShareCounter from '../Counters/ShareCounter';
-import { deleteCounterService } from '../../services/counters';
+import { notificationAction } from '../../actions';
 
 const Footer = ({ selectedCounterStore, shareCounterStore }) => {
     const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const Footer = ({ selectedCounterStore, shareCounterStore }) => {
 
     const handleDeleteCounter = () => {
         if (selectedCounterStore.length !== 0) {
-            dispatch(deleteCounterService(selectedCounterStore))
+            dispatch(notificationAction("confirmationDeleteCounter"))
         } else { return console.log("error") }
     }
     const buttonThash = <Btn title={trashIcon} theme="action" size="footer" onClick={handleDeleteCounter} />
