@@ -2,13 +2,15 @@ import React from 'react';
 import { connect, useDispatch } from 'react-redux';
 import './index.css';
 import { Modal, Form } from 'react-bootstrap';
-import dataForNotifications from './dataForNotifications.json';
+import { data } from './dataForNotifications';
 import Btn from '../Btn/Btn';
 import { notificationAction } from '../../actions';
 
-const Notifications = ({ notifications }) => {
+const Notifications = ({ notifications, selectedCounterStore }) => {
     const dispatch = useDispatch();
 
+    let counterName = selectedCounterStore.map((el) => el.title);
+console.log(counterName)
     const handleShowNotification = () => {
         dispatch(notificationAction(null))
     }
@@ -24,12 +26,12 @@ const Notifications = ({ notifications }) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title>
-                    {dataForNotifications[notifications].title}
+                    {data[notifications].title(counterName)}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form.Text id="passwordHelpBlock" muted>
-                    {dataForNotifications[notifications].description}
+                    {data[notifications].description}
                 </Form.Text>
                 <Btn theme="main" title="algo" />
             </Modal.Body>
@@ -37,7 +39,8 @@ const Notifications = ({ notifications }) => {
 }
 const mapStateToProps = (state) => {
     return {
-        notifications: state.notifications
+        notifications: state.notifications,
+        selectedCounterStore: state.selectedCounterStore,
     }
 }
 
