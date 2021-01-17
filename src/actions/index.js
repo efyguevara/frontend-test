@@ -48,4 +48,11 @@ export const deleteCounter = (id) => ({
     type: 'DELETE_COUNTER',
     id,
 });
-
+export const notificationAction = (key) => ({
+    type: 'NOTIFICATION_ACTION',
+    key
+});
+export const pushFilteredCounterAction = (data) => ({
+    type: 'PUSH_FILTERED_COUNTER_ACTION',
+    data
+});

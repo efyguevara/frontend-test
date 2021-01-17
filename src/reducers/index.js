@@ -42,12 +42,26 @@ const reducers = (state, action) => {
             return el
           }
         }),
+        filteredCounters: state.filteredCounters.map((el) => {
+          if (el.id === action.objectCounter.id) {
+            return action.objectCounter
+          } else {
+            return el
+          }
+        }),
         createNewCounterModal: false
       };
     case 'DEC_COUNTER':
       return {
         ...state,
         counterStore: state.counterStore.map((el) => {
+          if (el.id === action.objectCounter.id) {
+            return action.objectCounter
+          } else {
+            return el
+          }
+        }),
+        filteredCounters: state.filteredCounters.map((el) => {
           if (el.id === action.objectCounter.id) {
             return action.objectCounter
           } else {
@@ -77,6 +91,16 @@ const reducers = (state, action) => {
         ...state,
         counterStore: state.counterStore.filter((el) => el.id !== action.id),
       };
+    case 'NOTIFICATION_ACTION':
+      return {
+        ...state,
+        notifications: action.key,
+      }
+    case 'PUSH_FILTERED_COUNTER_ACTION':
+      return {
+        ...state,
+        filteredCounters: action.data,
+      }
 
     default:
       return state
