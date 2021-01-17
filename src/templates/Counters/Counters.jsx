@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { connect } from 'react-redux';
 import './index.css';
 import { Container } from 'react-bootstrap';
 import CounterList from '../../components/Counters/CounterList';
-import Layout from '../../components/Layout/Layout';
+import Footer from '../../components/Footer/Footer';
+import Search from '../../components/Searcher/Searcher';
 import CreateNewCounter from '../../components/Counters/CreateNewCounter';
 
-const Counters = ({ counterStore, createNewCounterModal }) => {
-    const counterList = <CounterList counters={counterStore} />
+const Counters = ({ counterStore, filteredCounters, createNewCounterModal }) => {
+    const [searching, setSearching] = useState(false);
+    const counterList = <CounterList counters={searching ? filteredCounters : counterStore} />
     const newCounter = <CreateNewCounter />;
+
+    const handleSearching = useCallback(() => {
+        setSearching(!searching)
+    })
 
     return (
         <>
-            <Layout />
+            <Search onSearch={handleSearching} />
             <div className="counters">
                 <Container>
                     {counterStore !== [] ? counterList :
@@ -24,6 +30,7 @@ const Counters = ({ counterStore, createNewCounterModal }) => {
                 </Container>
             </div>
             {createNewCounterModal === true ? newCounter : null}
+            <Footer />
         </>
     )
 }
@@ -31,6 +38,7 @@ const Counters = ({ counterStore, createNewCounterModal }) => {
 const mapStateToProps = (state) => {
     return {
         counterStore: state.counterStore,
+        filteredCounters: state.filteredCounters,
         createNewCounterModal: state.createNewCounterModal
     }
 }
