@@ -29,6 +29,7 @@ const reducers = (state, action) => {
     case 'POST_NEW_COUNTER':
       return {
         ...state,
+        loading: true,
         counterStore: [...state.counterStore, action.newCounter],
         createNewCounterModal: false
       };
