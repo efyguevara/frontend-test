@@ -7,6 +7,11 @@
     flex-wrap: wrap; 
     justify-content: flex-end;
 }
+.align-left {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-start;
+}
 
 .list-group-item {
     border: none;
@@ -20,4 +25,25 @@
     border-radius: 10px;
     text-decoration: none;
     background-color: var(--main-color-opacity);
+}
+.modal-title-counters {
+    text-align: left;
+}
+
+#modalLarge.modal-dialog {
+   height: 95%;
+}
+
+.modal-header {
+    justify-content: start;
+}
+
+#modalLarge>.modal-content {
+    border-radius: 16px;
+    min-height: 100%;
+}
+
+.link-to-examples {
+    color: #6c757d;
+    text-decoration: underline;
 }
