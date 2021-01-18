@@ -14,6 +14,8 @@ const initialState = {
   loading: false,
   counterStore: [],
   createNewCounterModal: false,
+  exampleCountersModal: false,
+  exampleCounterName: null,
   filteredCounters: [],
   shareCounterStore: false,
   selectedCounterStore: [],

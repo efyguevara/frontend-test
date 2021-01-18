@@ -21,6 +21,14 @@ export const createNewCounterModalAction = (showModal) => ({
     type: 'CREATE_NEW_COUNTER_MODAL_ACTION',
     showModal,
 });
+export const exampleCountersModalAction = (showModal) => ({
+    type: 'EXAMPLE_COUNTERS_MODAL_ACTION',
+    showModal,
+});
+export const exampleCountersNameAction = (title) => ({
+    type: 'EXAMPLE_COUNTERS_NAME_ACTION',
+    title,
+});
 export const postNewCounter = (newCounter) => ({
     type: 'POST_NEW_COUNTER',
     newCounter,

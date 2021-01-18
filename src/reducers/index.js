@@ -24,14 +24,26 @@ const reducers = (state, action) => {
     case 'CREATE_NEW_COUNTER_MODAL_ACTION':
       return {
         ...state,
-        createNewCounterModal: action.showModal
+        createNewCounterModal: action.showModal,
+        exampleCounterName: action.showModal ? state.exampleCounterName : null
+      };
+    case 'EXAMPLE_COUNTERS_MODAL_ACTION':
+      return {
+        ...state,
+        exampleCountersModal: action.showModal
+      };
+    case 'EXAMPLE_COUNTERS_NAME_ACTION':
+      return {
+        ...state,
+        exampleCounterName: action.title
       };
     case 'POST_NEW_COUNTER':
       return {
         ...state,
         loading: true,
         counterStore: [...state.counterStore, action.newCounter],
-        createNewCounterModal: false
+        createNewCounterModal: false,
+        exampleCounterName: null
       };
     case 'INC_COUNTER':
       return {
