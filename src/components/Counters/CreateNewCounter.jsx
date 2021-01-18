@@ -66,7 +66,7 @@ const CreateNewCounter = ({ exampleCounterName, createNewCounterModal }) => {
                 size="lg"
             >
                 <Modal.Header>
-                    <Btn theme="modalClose" title={closeIcon} align="" onClick={handleOnHideModal} />
+                    <Btn theme="modalClose" title={closeIcon} onClick={handleOnHideModal} />
                     <Modal.Title className="modal-title-counters">Create Counter</Modal.Title>
                     <Col className="p-0 align-right">
                         <Btn disabledButton={newCounterName.title === null} theme="main" title="Save"  align="align-right" onClick={handlePostNewCounter} />

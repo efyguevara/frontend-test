@@ -23,17 +23,17 @@ const Notifications = ({ notifications, selectedCounterStore }) => {
     }
     const setDismissButton = () => {
         if (data[notifications.key].actions.dismiss) {
-            return <Btn theme="main" title="Dismiss" onClick={() => handleShowNotification()} />
+            return <Btn theme="main-light" title="Dismiss" onClick={() => handleShowNotification()} />
         }
     }
     const setCancelButton = () => {
         if (data[notifications.key].actions.cancel) {
-            return <Btn theme="action" title="Cancel" onClick={() => handleShowNotification()} />
+            return <Btn theme="main" title="Cancel" onClick={() => handleShowNotification()} />
         }
     }
     const setDeleteButton = () => {
         if (data[notifications.key].actions.delete) {
-            return <Btn theme="action" title="Delete" onClick={() => dispatch(deleteCounterService(selectedCounterStore))} />
+            return <Btn theme="light-gray" title="Delete" colorText="btn-delete" align="btn-delete" onClick={() => dispatch(deleteCounterService(selectedCounterStore))} />
         }
     }
 

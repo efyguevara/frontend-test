@@ -1,71 +1,76 @@
 .btn {
     font-size: 17px;
     font-weight: 600; 
+    border-radius: 8px;
+    margin: 3px 10px 3px 0px;
 }
-
 .btn:hover {
     background-color: none;
     border-color: none;   
 }
-
 .btn:focus { 
     box-shadow: none;
 }
+
 
 .btn-main {
     color: var(--color-white);
     background-color: var(--main-color);
     border-color: 0 0 0 0.1rem var(--main-color);
 }
-
 .btn-main:hover {
     color: var(--color-white);
     background-color: var(--main-color-opacity);
     border-color: 0 0 0 0.1rem var(--main-color-opacity);   
 }
-
 .btn-main:focus { 
     box-shadow: 0 0 0 0.1rem var(--main-color-opacity);
 }
 
+
 .btn-cancel {
     color: var(--cancel-and-alert-text-color);
     background-color: var(--color-white);
-    border-color: var(--color-black);
+    border-color: var(--color-gray);
 }
-
 .btn-cancel:hover {
-    color: var(--color-white);
-    background-color: var(--main-color);
-    border-color: 0 0 0 0.1rem var(--main-color);
+    color: var(--color-black);
+    background-color: var(--color-gray);
+    border-color: 0 0 0 0.1rem var(--color-gray);
 }
-
 .btn-cancel:focus {
-    border-color: 0 0 0 0.1rem var(--main-color);
-    box-shadow: 0 0 0 0.1rem var(--main-color-opacity);
+    border-color: 0 0 0 0.1rem var(--color-gray);
+    box-shadow: 0 0 0 0.1rem var(--color-gray);
 }
 
-.btn-action {
+
+.btn-light-gray {
     color: var(--main-color);
     background-color: var(--color-white);
     border-color: var(--color-gray);
-}
-
-.btn-action:hover {
-    color: var(--main-color);
+}.btn-light-gray:hover {
+    color: var(--color-black);
     background-color: var(--color-gray);
-    border-color: var(--color-gray);
+    border-color: none;
 }
 
-.btn-action:focus {
-    border-color: var(--color-gray);
-    box-shadow: var(--color-gray);
+
+.btn-main-light {
+    color: var(--main-color);
+    background-color: var(--color-white);
+    border-color: none;
+}
+.btn-main-light:hover {
+    color: var(--main-color);
+    background-color: var(--color-white);
+    border-color: none;
 }
 
 .btn-footer {
-    margin: 3px;
     width: 6.1875em;
     height: 2.5em;
+    margin-left: 0px;
+    margin-right: 10px;
 }
 
 .btn-example-counters {
@@ -74,10 +79,22 @@
     margin: 10px 10px 10px 0px;
 }
 
+.btn-welcome {
+    width: 136px;
+    height: 40px;
+}
+
+.btn-modalClose {
+    float:left; 
+}
+
+.btn-delete {
+    color: var(--color-red)
+}
+
+
 @media (max-width: 320px) { 
     .btn-footer {
-        margin-left: 5px;
-        margin-right: 5px;
         width: 71px;
         height: 40px;
     }
@@ -85,27 +102,8 @@
 
 @media (min-width: 321px) and (max-width: 425px) { 
     .btn-footer {
-        margin-left: 8px;
-        margin-right: 8px;
         width: 81px;
         height: 40px;
     }
 }
 
-@media (min-width: 426px) and (max-width: 768px)  { 
-    .btn-footer {
-        margin-right: 15px;
-        margin-left: 15px;
-    }
-}
-@media (min-width: 769px) { 
-    .btn-footer {
-        margin-right: 35px;
-        margin-left: 35px;
-    }
-}
-
-.btn-welcome {
-    width: 136px;
-    height: 40px;
-}

@@ -35,7 +35,7 @@ const Footer = ({ selectedCounterStore, shareCounterStore }) => {
             <Col>
                 <Popover.Title as="h3">Share {selectedCounterStore.length} counter</Popover.Title>
                 <Popover.Content>
-                    <Btn theme="action" title="Copy" onClick={copyText} />
+                    <Btn theme="main-light" title="Copy" onClick={copyText} />
                 </Popover.Content>
             </Col>
             <Col>
@@ -47,7 +47,7 @@ const Footer = ({ selectedCounterStore, shareCounterStore }) => {
 
     const showShareComponent = () => {
         return <OverlayTrigger trigger="click" placement="top" overlay={popover} >
-            <Btn title={shareIcon} theme="action" size="footer" onClick={handleShareCounter} />
+            <Btn title={shareIcon} theme="light-gray" size="footer" onClick={handleShareCounter} />
         </OverlayTrigger>
     }
 
@@ -56,7 +56,7 @@ const Footer = ({ selectedCounterStore, shareCounterStore }) => {
             dispatch(notificationAction("confirmationDeleteCounter"))
         } else { return console.log("error") }
     }
-    const buttonThash = <Btn title={trashIcon} theme="action" size="footer" onClick={handleDeleteCounter} />
+    const buttonThash = <Btn title={trashIcon} theme="light-gray" size="footer" onClick={handleDeleteCounter} />
     return (
         <>
             <div className="footer">

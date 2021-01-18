@@ -24,7 +24,7 @@ const Searcher = ({ counterStore, onSearch }) => {
             setSearch("")
         }
     }
-    const btnCancel = <Btn theme="action" title="Cancel" />
+    const btnCancel = <Btn theme="cancel" title="Cancel" />
 
     useEffect(() => {
         pushCounters()

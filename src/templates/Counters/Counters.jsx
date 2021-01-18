@@ -32,7 +32,7 @@ const Counters = ({ counterStore, filteredCounters, createNewCounterModal, examp
             return <div className="text-center">
                 <h4>Couldn’t load the counters</h4>
                 <p>The Internet connection appears to be offline.</p>
-                <Btn theme="action" title="Retry" onClick={refreshPage} />
+                <Btn theme="main-light" title="Retry" onClick={refreshPage} />
             </div>
         } else {
             return counterStore !== [] ? counterList :

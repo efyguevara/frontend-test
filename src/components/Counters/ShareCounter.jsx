@@ -20,7 +20,7 @@ const ShareCounter = (props) => {
       <Col>
         <Popover.Title as="h3">Share {props.selectedCounter.length} counter</Popover.Title>
         <Popover.Content>
-          <Btn theme="action" title="Copy" onClick={copyText} />
+          <Btn theme="main-light" title="Copy" onClick={copyText} />
         </Popover.Content>
       </Col>
       <Col>
