@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import './index.css';
-import { FormControl, InputGroup } from 'react-bootstrap';
+import { Container, Form, FormControl, InputGroup } from 'react-bootstrap';
 import glass from '../../assets/static/glass.svg';
 import { pushFilteredCounterAction } from '../../actions';
 import Btn from '../Btn/Btn';
@@ -33,23 +33,26 @@ const Searcher = ({ counterStore, onSearch }) => {
 
     return (
         <>
+
             <div className="searcher">
-                <InputGroup>
-                    <InputGroup.Prepend>
-                        <InputGroup.Text>{iconSearch}</InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <FormControl
-                        className="searcher-without-border"
-                        id="inlineFormInputGroup"
-                        placeholder="Search counters"
-                        name="search"
-                        value={search}
-                        onChange={(event) => setSearch(event.target.value)}
-                        onFocus={() => setFocusValue(true)}
-                        onBlur={() => setFocusValue(false)}
-                    />
-                    {cancelButton ? btnCancel : null}
-                </InputGroup>
+                <Container fluid className="container-searcher">
+                    <InputGroup className="input-group-search">
+                        <InputGroup.Prepend>
+                            <InputGroup.Text>{iconSearch}</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                            className="searcher-without-border"
+                            id="inlineFormInputGroup"
+                            placeholder="Search counters"
+                            name="search"
+                            value={search}
+                            onChange={(event) => setSearch(event.target.value)}
+                            onFocus={() => setFocusValue(true)}
+                            onBlur={() => setFocusValue(false)}
+                        />
+                        {cancelButton ? btnCancel : null}
+                    </InputGroup>
+                </Container>
             </div>
         </>
     )

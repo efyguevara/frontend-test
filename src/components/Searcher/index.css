@@ -31,11 +31,6 @@
     box-shadow: 0 0 0 0.1rem var(--main-color-opacity);
 }
 
-/* @media (max-width: 425px) { 
-    .container-searcher {
-        padding: 0;
-    }
-} */
 @media (min-width: 769px) { 
     .searcher {
         flex-wrap: wrap; 

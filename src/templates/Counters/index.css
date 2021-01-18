@@ -1,0 +1,10 @@
+@media (min-width: 769px) { 
+    .container-counters {
+        max-width: 60%;
+    } 
+    .counters {
+        flex-wrap: wrap; 
+        display: flex;
+        justify-content: center;
+    }
+}

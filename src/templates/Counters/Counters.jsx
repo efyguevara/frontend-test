@@ -36,7 +36,7 @@ const Counters = ({ counterStore, filteredCounters, createNewCounterModal, examp
             </div>
         } else {
             return counterStore !== [] ? counterList :
-                <div className="text-center">
+                <div className="no-counters text-center">
                     <h4>No counters yet</h4>
                     <p>“When I started counting my blessings, my whole life turned around.”—Willie Nelson</p>
                 </div>
@@ -50,7 +50,7 @@ const Counters = ({ counterStore, filteredCounters, createNewCounterModal, examp
         <>
             <Search onSearch={handleSearching} />
             <div className="counters">
-                <Container>
+                <Container className="container-counters">
                     {handleConnection()}
                 </Container>
             </div>
