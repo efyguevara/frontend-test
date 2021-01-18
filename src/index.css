@@ -7,4 +7,13 @@ html {
     --list-text-color: #212121;
     --color-white: #ffffff;
     --color-black: #000000;
+    --color-red: #FF3B30;
+    min-height: 100%;
   }
+
+body {
+  position: relative;
+  margin: 0;
+  margin-bottom: 80px;
+  margin-top: 80px;
+}
