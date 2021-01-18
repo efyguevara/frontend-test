@@ -1,18 +1,40 @@
 import React from 'react';
 import { connect, useDispatch } from 'react-redux';
 import './index.css';
-import { Modal, Form } from 'react-bootstrap';
+import { Row, Col, Modal, Form } from 'react-bootstrap';
 import { data } from './dataForNotifications';
 import Btn from '../Btn/Btn';
-import { notificationAction } from '../../actions';
+import { removeNotifications } from '../../actions';
+import { deleteCounterService } from '../../services/counters';
 
 const Notifications = ({ notifications, selectedCounterStore }) => {
     const dispatch = useDispatch();
 
     let counterName = selectedCounterStore.map((el) => el.title);
-console.log(counterName)
+
     const handleShowNotification = () => {
-        dispatch(notificationAction(null))
+        dispatch(removeNotifications(null))
+    }
+
+    const setRetryButton = () => {
+        if (data[notifications.key].actions.retry) {
+            return <Btn theme="main" title="Retry" onClick={() => { notifications.retry_func() }} />
+        }
+    }
+    const setDismissButton = () => {
+        if (data[notifications.key].actions.dismiss) {
+            return <Btn theme="main" title="Dismiss" onClick={() => handleShowNotification()} />
+        }
+    }
+    const setCancelButton = () => {
+        if (data[notifications.key].actions.cancel) {
+            return <Btn theme="action" title="Cancel" onClick={() => handleShowNotification()} />
+        }
+    }
+    const setDeleteButton = () => {
+        if (data[notifications.key].actions.delete) {
+            return <Btn theme="action" title="Delete" onClick={() => dispatch(deleteCounterService(selectedCounterStore))} />
+        }
     }
 
     return (
@@ -24,16 +46,31 @@ console.log(counterName)
             size="sm"
             centered
         >
-            <Modal.Header closeButton>
-                <Modal.Title>
-                    {data[notifications].title(counterName)}
+            <Modal.Header>
+                <Modal.Title className="modal-title-notifications">
+                    {data[notifications.key].title(counterName)}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form.Text id="passwordHelpBlock" muted>
-                    {data[notifications].description}
-                </Form.Text>
-                <Btn theme="main" title="algo" />
+                <Form.Text id="passwordHelpBlock">
+                    <Row className="pb-4">
+                        <Col>
+                            {data[notifications.key].description}
+                        </Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col className="j-content-center">
+                            {setRetryButton()}
+                            {setDismissButton()}
+                            {setCancelButton()}
+                            {setDeleteButton()}
+                        </Col>
+                    </Row>
+                </Form.Text >
+
+
             </Modal.Body>
         </Modal>)
 }
