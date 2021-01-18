@@ -103,11 +103,19 @@ const reducers = (state, action) => {
       return {
         ...state,
         counterStore: state.counterStore.filter((el) => el.id !== action.id),
+        notifications: null,
+        selectedCounterStore: []
       };
     case 'NOTIFICATION_ACTION':
       return {
         ...state,
-        notifications: action.key,
+        notifications: { key: action.key, retry_func: action.retry_func }
+      }
+    case 'REMOVE_NOTIFICATION':
+      return {
+        ...state,
+        notifications: null,
+        selectedCounterStore: [],
       }
     case 'PUSH_FILTERED_COUNTER_ACTION':
       return {

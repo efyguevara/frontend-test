@@ -41,24 +41,25 @@ export const decCounter = (objectCounter) => ({
     type: 'DEC_COUNTER',
     objectCounter,
 });
-
 export const shareCounter = (showPopover) => ({
     type: 'SHARE_COUNTER',
     showPopover,
 });
-
 export const selectedCounter = (data) => ({
     type: 'SELECTED_COUNTER',
     data,
 });
-
 export const deleteCounter = (id) => ({
     type: 'DELETE_COUNTER',
     id,
 });
-export const notificationAction = (key) => ({
+export const notificationAction = (key, retry_func) => ({
     type: 'NOTIFICATION_ACTION',
-    key
+    key,
+    retry_func
+});
+export const removeNotifications = () => ({
+    type: 'REMOVE_NOTIFICATION',
 });
 export const pushFilteredCounterAction = (data) => ({
     type: 'PUSH_FILTERED_COUNTER_ACTION',

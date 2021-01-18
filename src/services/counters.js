@@ -5,6 +5,7 @@ import {
     decCounter,
     deleteCounter,
     notificationAction,
+    removeNotifications,
 } from '../actions';
 
 export const getCountersService = () => {
@@ -41,74 +42,119 @@ export const postNewCounterService = (counterName) => {
             })
     }
 }
-
 export const postCounterIncService = (props) => {
     return (dispatch) => {
-        if (navigator.onLine === false) {
-            return dispatch(notificationAction("couldntUpdateCounter"))
-        }
-        fetch('/api/v1/counter/inc', {
+        const url = '/api/v1/counter/inc'
+        const options = {
             method: 'POST',
             body: JSON.stringify(props.props),
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-            .then((res) => {
-                if (res.ok) {
-                    res.json()
-                        .then((res) => {
-                            return dispatch(incCounter(res))
-                        })
-                }
-            })
+        }
+
+        const success_func = (res) => {
+            return dispatch(incCounter(res))
+        }
+
+        fetch(url, options)
+            .then((res) => res.json()
+                .then((res) => {
+                    return success_func(res)
+                })
+            ).catch(() => {
+                return dispatch(fetchRetry(url, options, { "onSuccess": success_func }))
+            });
     }
 }
 
 export const postCounterDecService = (props) => {
     return (dispatch) => {
-        if (navigator.onLine === false) {
-            return dispatch(notificationAction("couldntUpdateCounter"))
-        }
-        fetch('/api/v1/counter/dec', {
+        const url = '/api/v1/counter/dec';
+        const options = {
             method: 'POST',
             body: JSON.stringify(props.props),
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-            .then((res) => {
-                if (res.ok) {
-                    res.json()
-                        .then((res) => {
-                            return dispatch(decCounter(res))
-                        })
-                }
-            })
+        }
+
+        const success_func = (res) => {
+            return dispatch(decCounter(res))
+        }
+
+        fetch(url, options)
+            .then((res) => res.json()
+                .then((res) => {
+                    return success_func(res)
+                })
+            ).catch(() => {
+                return dispatch(fetchRetry(url, options, { "onSuccess": success_func }))
+            });
     }
 }
 
 export const deleteCounterService = (selectedCounterStore) => {
     return (dispatch) => {
-        if (navigator.onLine === false) {
-            return dispatch(notificationAction("couldntDeleteCounter"))
+        const success_func = (res) => {
+            return dispatch(deleteCounter(res))
         }
         selectedCounterStore.forEach((el) => {
-            fetch('/api/v1/counter', {
+            const url = '/api/v1/counter';
+            const options = {
                 method: 'DELETE',
                 body: JSON.stringify(el),
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            })
+            }
+            fetch(url, options)
+                .then((res) => res.json()
+                    .then((res) => {
+                        return success_func(res)
+                    })
+                ).catch(() => {
+                    return dispatch(deleteRetry(url, options, { "onSuccess": success_func }))
+                });
+        })
+    }
+}
+
+const fetchRetry = (url, options, extra_data) => {
+    return (dispatch) => {
+        const retry = () => {
+            fetch(url, options)
                 .then((res) => {
                     if (res.ok) {
-                        res.json()
-                            .then((res) => {
-                                return dispatch(deleteCounter(res))
-                            })
+                        res.json().then((res) => {
+                            dispatch(removeNotifications())
+                            return extra_data.onSuccess(res)
+                        })
                     }
+                    return fetchRetry(url, options, extra_data)
                 })
-        })
+        }
+        if (navigator.onLine === false) {
+            return dispatch(notificationAction("couldntUpdateCounter", retry))
+        }
+    }
+}
+const deleteRetry = (url, options, extra_data) => {
+    return (dispatch) => {
+        const retry = () => {
+            fetch(url, options)
+                .then((res) => {
+                    if (res.ok) {
+                        res.json().then((res) => {
+                            dispatch(removeNotifications())
+                            return extra_data.onSuccess(res)
+                        })
+                    }
+                    return fetchRetry(url, options, extra_data)
+                })
+        }
+        if (navigator.onLine === false) {
+            return dispatch(notificationAction("couldntDeleteCounter", retry))
+        }
     }
 }
