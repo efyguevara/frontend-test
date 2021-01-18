@@ -6,14 +6,16 @@ import CounterList from '../../components/Counters/CounterList';
 import Footer from '../../components/Footer/Footer';
 import Search from '../../components/Searcher/Searcher';
 import CreateNewCounter from '../../components/Counters/CreateNewCounter';
+import ExampleCounters from '../../components/Counters/ExampleCounters';
 import { changeLoading } from '../../actions';
 import Btn from '../../components/Btn/Btn';
 
-const Counters = ({ counterStore, filteredCounters, createNewCounterModal }) => {
+const Counters = ({ counterStore, filteredCounters, createNewCounterModal, exampleCountersModal, exampleCounterName }) => {
     const dispatch = useDispatch();
     const [searching, setSearching] = useState(false);
     const counterList = <CounterList counters={searching ? filteredCounters : counterStore} />
     const newCounter = <CreateNewCounter />;
+    const exampleCounters = <ExampleCounters />;
 
     const handleSearching = useCallback(() => {
         setSearching(!searching)
@@ -25,7 +27,6 @@ const Counters = ({ counterStore, filteredCounters, createNewCounterModal }) => 
     }
 
     const handleConnection = () => {
-        console.log("component", navigator.onLine)
         if (navigator.onLine === false) {
             dispatch(changeLoading(false))
             return <div className="text-center">
@@ -54,6 +55,7 @@ const Counters = ({ counterStore, filteredCounters, createNewCounterModal }) => 
                 </Container>
             </div>
             {createNewCounterModal === true ? newCounter : null}
+            {exampleCountersModal === true ? exampleCounters : null}
             <Footer />
         </>
     )
@@ -63,7 +65,8 @@ const mapStateToProps = (state) => {
     return {
         counterStore: state.counterStore,
         filteredCounters: state.filteredCounters,
-        createNewCounterModal: state.createNewCounterModal
+        createNewCounterModal: state.createNewCounterModal,
+        exampleCountersModal: state.exampleCountersModal,
     }
 }
 export default connect(mapStateToProps)(Counters);
