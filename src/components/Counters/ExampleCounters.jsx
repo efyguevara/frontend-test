@@ -4,9 +4,12 @@ import './index.css';
 import { exampleCountersModalAction, exampleCountersNameAction } from '../../actions';
 import { Modal, Form, Container, Row } from 'react-bootstrap';
 import Btn from '../Btn/Btn';
+import close from '../../assets/static/Close.svg'
 
 const ExampleCounters = () => {
     const dispatch = useDispatch();
+    const closeIcon = <img src={close} alt="Icon close modal" />
+
 
     const dataCounterExamples = {
         "Food": ["Hot-dogs", "Apples", "Meat burgers", "Bananas", "Soup"],
@@ -46,11 +49,12 @@ const ExampleCounters = () => {
                 keyboard={false}
                 size="lg"
             >
-                <Modal.Header closeButton>
+                <Modal.Header>
+                    <Btn theme="modalClose" title={closeIcon} align="" onClick={handleOnHideModal} />
                     <Modal.Title>Examples</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form.Text muted>
+                    <Form.Text muted className="text-left">
                         Select an example to add it to your counters.
                     </Form.Text>
                     {addExampleToCounters()}
