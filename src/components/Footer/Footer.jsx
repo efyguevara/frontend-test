@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect, useDispatch } from 'react-redux';
 import './index.css';
-import { Container, Row, Col, OverlayTrigger } from 'react-bootstrap';
+import { Container, Row, Col, OverlayTrigger, Popover } from 'react-bootstrap';
 import Btn from '../Btn/Btn';
 import trash from '../../assets/static/trash.svg';
 import share from '../../assets/static/share.svg';
 import plus from '../../assets/static/plus.svg';
 import { createNewCounterModalAction, shareCounter } from '../../actions';
-import ShareCounter from '../Counters/ShareCounter';
 import { notificationAction } from '../../actions';
 
 const Footer = ({ selectedCounterStore, shareCounterStore }) => {
@@ -16,7 +15,6 @@ const Footer = ({ selectedCounterStore, shareCounterStore }) => {
     const trashIcon = <img src={trash} alt='trash icon' />;
     const shareIcon = <img src={share} alt='share icon' />;
     const plusIcon = <img src={plus} alt='plus icon' />;
-    const shareComponent = <ShareCounter selectedCounter={selectedCounterStore} />;
 
     const handleNewCounterModal = () => {
         dispatch(createNewCounterModalAction(true))
@@ -26,11 +24,32 @@ const Footer = ({ selectedCounterStore, shareCounterStore }) => {
         dispatch(shareCounter(!shareCounterStore))
     }
 
-    const showShareComponent = () => (
-        <OverlayTrigger trigger="click" placement="top" overlay={shareComponent} show={shareCounterStore}>
+    let setAllCountersSelected = `${selectedCounterStore.map(el => el.count)} x ${selectedCounterStore.map(el => el.title)}`;
+
+    const copyText = () => {
+        navigator.clipboard.writeText(setAllCountersSelected)
+        dispatch(shareCounter(false))
+    }
+    const popover = (
+        <Popover id="popover-basic" className="p-sticky" >
+            <Col>
+                <Popover.Title as="h3">Share {selectedCounterStore.length} counter</Popover.Title>
+                <Popover.Content>
+                    <Btn theme="action" title="Copy" onClick={copyText} />
+                </Popover.Content>
+            </Col>
+            <Col>
+                <Popover.Content>
+                    {setAllCountersSelected}
+                </Popover.Content>
+            </Col>
+        </Popover>);
+
+    const showShareComponent = () => {
+        return <OverlayTrigger trigger="click" placement="top" overlay={popover} >
             <Btn title={shareIcon} theme="action" size="footer" onClick={handleShareCounter} />
         </OverlayTrigger>
-    );
+    }
 
     const handleDeleteCounter = () => {
         if (selectedCounterStore.length !== 0) {
@@ -38,11 +57,10 @@ const Footer = ({ selectedCounterStore, shareCounterStore }) => {
         } else { return console.log("error") }
     }
     const buttonThash = <Btn title={trashIcon} theme="action" size="footer" onClick={handleDeleteCounter} />
-
     return (
         <>
-            <Container>
-                <div className="footer">
+            <div className="footer">
+                <Container fluid className="container-footer">
                     <Row>
                         <Col xs={7} sm={8} md={6} lg={6} className="d-flex">
                             {selectedCounterStore.length !== 0 ? buttonThash : null}
@@ -53,8 +71,8 @@ const Footer = ({ selectedCounterStore, shareCounterStore }) => {
                             <Btn title={plusIcon} theme="main" size="footer" onClick={handleNewCounterModal} />
                         </Col>
                     </Row>
-                </div>
-            </Container>
+                </Container>
+            </div>
         </>
     )
 }
