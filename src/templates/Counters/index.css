@@ -1,3 +1,7 @@
+.no-counters, .no-connection {
+    margin-top: 50%;
+}
+
 @media (min-width: 769px) { 
     .container-counters {
         max-width: 60%;
@@ -6,5 +10,8 @@
         flex-wrap: wrap; 
         display: flex;
         justify-content: center;
+    }
+    .no-counters, .no-connection {
+        margin-top: 30%;
     }
 }

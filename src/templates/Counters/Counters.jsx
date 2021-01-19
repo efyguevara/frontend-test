@@ -29,7 +29,7 @@ const Counters = ({ counterStore, filteredCounters, createNewCounterModal, examp
     const handleConnection = () => {
         if (navigator.onLine === false) {
             dispatch(changeLoading(false))
-            return <div className="text-center">
+            return <div className="no-connection text-center">
                 <h4>Couldn’t load the counters</h4>
                 <p>The Internet connection appears to be offline.</p>
                 <Btn theme="main-light" title="Retry" onClick={refreshPage} />
