@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import reducers from './reducers/index';
 import App from './routes/App';
 
-const initialState = {
+export const initialState = {
   loading: false,
   counterStore: [],
   createNewCounterModal: false,
@@ -34,5 +34,5 @@ ReactDOM.render(
       <App />
     </React.StrictMode>
   </Provider>,
-  document.getElementById('root')
-);
+  document.getElementById('root') || document.createElement('div')
+  );
