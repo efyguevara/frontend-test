@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Row, Col } from 'react-bootstrap';
 import { getCountersService } from '../../services/counters';
 import { changeLoading } from '../../actions';
 import './index.css';
@@ -16,15 +17,30 @@ const Welcome = () => {
         dispatch(changeLoading(true))
         dispatch(getCountersService())
     }
-    
+
     return (
         <>
             <div className="welcome">
                 <Container>
-                    <img src={initialImage} className="initialImage d-block ml-auto mr-auto" alt="logo counter app" />
-                    <h4 className="d-block text-center bold">Welcome to Counters</h4>
-                    <p className="d-block text-center">Capture cups of lattes, frapuccinos, or anything else that can be counted.</p>
-                    <Link to="/counters"> <Btn title="Get Started" align="d-block ml-auto mr-auto" theme="main" size="welcome" onClick={fillCounters} /></Link>
+                    <Row>
+                        <img src={initialImage} className="initialImage d-block ml-auto mr-auto" alt="logo counter app" />
+                    </Row>
+
+                    <Row>
+                        <Col>
+                            <h4 className="d-block text-center bold">Welcome to Counters</h4>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <p className="d-block text-center">Capture cups of lattes, frapuccinos, or anything else that can be counted.</p>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="text-center">
+                            <Link to="/counters"> <Btn title="Get Started" align="" theme="main" size="welcome" onClick={fillCounters} /></Link>
+                        </Col>
+                    </Row>
                 </Container>
             </div>
         </>
