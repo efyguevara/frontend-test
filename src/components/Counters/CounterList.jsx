@@ -52,7 +52,7 @@ const CounterList = (props) => {
                 {counters.length > 0 ?
                     counters.map((el) => {
                         return <DinacmiRowsOfCounterList key={el.id} {...el} />
-                    }) : handleLoading()
+                    }) : null
                 }
             </ListGroup>
         </>

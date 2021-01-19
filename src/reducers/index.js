@@ -104,7 +104,8 @@ const reducers = (state, action) => {
         ...state,
         counterStore: state.counterStore.filter((el) => el.id !== action.id),
         notifications: null,
-        selectedCounterStore: []
+        selectedCounterStore: [],
+        loading: false
       };
     case 'NOTIFICATION_ACTION':
       return {
