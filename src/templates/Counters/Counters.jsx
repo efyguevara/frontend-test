@@ -35,7 +35,7 @@ const Counters = ({ counterStore, filteredCounters, createNewCounterModal, examp
                 <Btn theme="main-light" title="Retry" onClick={refreshPage} />
             </div>
         } else {
-            return counterStore !== [] ? counterList :
+            return counterStore.length > 0 ? counterList :
                 <div className="no-counters text-center">
                     <h4>No counters yet</h4>
                     <p>“When I started counting my blessings, my whole life turned around.”—Willie Nelson</p>
