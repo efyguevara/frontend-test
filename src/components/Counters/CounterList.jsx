@@ -6,7 +6,6 @@ import Btn from '../Btn/Btn';
 import refresh from '../../assets/static/refresh.svg';
 import DinacmiRowsOfCounterList from './DinamicRowsOfCounterList';
 import { getCountersService } from '../../services/counters';
-import { changeLoading } from '../../actions';
 
 const CounterList = (props) => {
     const dispatch = useDispatch();
@@ -19,10 +18,6 @@ const CounterList = (props) => {
     useEffect(() => {
         dispatch(getCountersService())
     }, [dispatch])
-
-    const handleLoading = () => {
-        dispatch(changeLoading(true))
-    };
 
     const setTotalCount = () => {
         let numberOfRepetitions = 0;

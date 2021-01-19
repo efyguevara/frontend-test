@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import set from 'lodash/set';
 import './index.css';
-import { Row, Col, Modal, Form } from 'react-bootstrap';
+import { Col, Modal, Form } from 'react-bootstrap';
 import Btn from '../Btn/Btn';
 import { createNewCounterModalAction, exampleCountersModalAction } from '../../actions';
 import { postNewCounterService } from '../../services/counters';

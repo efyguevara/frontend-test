@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import './index.css';
-import { Container, Form, FormControl, InputGroup } from 'react-bootstrap';
+import { Container, FormControl, InputGroup } from 'react-bootstrap';
 import glass from '../../assets/static/glass.svg';
 import { pushFilteredCounterAction } from '../../actions';
 import Btn from '../Btn/Btn';

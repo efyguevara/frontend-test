@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import { getCountersService } from '../../services/counters';
-import { changeLoading } from '../../actions';
+// import { changeLoading } from '../../actions';
 import './index.css';
 import { Container } from 'react-bootstrap';
 import initialImage from '../../assets/static/initialImage.svg';
@@ -14,7 +14,7 @@ const Welcome = () => {
     const dispatch = useDispatch();
 
     const fillCounters = () => {
-        dispatch(changeLoading(true))
+        // dispatch(changeLoading(true))
         dispatch(getCountersService())
     }
 
